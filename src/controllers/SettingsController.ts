@@ -8,9 +8,9 @@ class SettingsController {
     const settingsService = new SettingsService();
 
     try {
-      const settings = settingsService.create({ username, chat });
-
+      const settings = await settingsService.create({ username, chat });
       return response.json(settings);
+
     } catch(err) {
       return response.status(400).json({
         message: err.message,
