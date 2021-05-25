@@ -14,5 +14,9 @@ routes.post("/user", usersController.create);
 routes.post("/messages", messagesController.create);
 routes.get("/messages/:id", messagesController.showByUser);
 
+//WEBSOCKETS
+routes.get("/pages/client", (request, response) => {
+  return response.render("html/client.html");
+})
 
 export { routes };
