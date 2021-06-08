@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { Users } from './Users';
 
@@ -9,7 +9,10 @@ class Connection {
 
   @Column()
   admin_id: String;
-
+  
+  @Column()
+  socket_id: string;
+  
   @JoinColumn({ name: "user_id" })
   @ManyToOne(() => Users)
   user: Users;
@@ -17,13 +20,10 @@ class Connection {
   @Column()
   user_id: string;
 
-  @Column()
-  socket_id: string;
-
   @CreateDateColumn()
   created_at: Date;
 
-  @CreateDateColumn()
+  @UpdateDateColumn()
   updated_at: Date;
 
   constructor() {
